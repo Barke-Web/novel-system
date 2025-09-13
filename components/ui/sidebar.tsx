@@ -15,6 +15,10 @@ import {
   ShieldCheckIcon,
   IdCardIcon,
   FileIcon,
+  PowerOffIcon,
+  User2Icon,
+  FolderIcon,
+  FolderOpenIcon,
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
@@ -57,6 +61,11 @@ const sidebarItems = [
     href: "/profile",
     icon: IdCardIcon,
   },
+  {
+    title: "Category",
+    href: "/category",
+    icon: FolderOpenIcon,
+  }
 ]
 
 export function Sidebar() {
@@ -131,14 +140,17 @@ export function Sidebar() {
         {/* Footer with Profile + Logout */}
         <div className="p-4 border-t border-sidebar-border">
           {!collapsed ? (
-            <div className="flex items-center justify-between">
-              <div>
+            <div className="flex items-center space-x-3">
+                  <User2Icon/>
+                  <div className="ml-2 flex flex-col">
                 <p className="text-sm font-medium text-sidebar-foreground">John Doe</p>
                 <p className="text-xs text-muted-foreground">Administrator</p>
-              </div>
+                </div>
+                <div className="ml-auto">
               <Button variant="ghost" size="icon" onClick={handleLogout}>
                 <LogOut className="h-5 w-5 text-sidebar-foreground" />
               </Button>
+              </div>
             </div>
           ) : (
             <Button variant="ghost" size="icon" onClick={handleLogout}>

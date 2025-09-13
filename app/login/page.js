@@ -116,14 +116,14 @@ export default function LoginPage() {
                             <Image
                                 src="/Novel.png"
                                 alt="Logo"
-                                width={165}
-                                height={165}
+                                width={170}
+                                height={170}
                                 priority
                             />
                         </div>
 
                         {/* Form */}
-                        <form className="space-y-6 bg-white p-6 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
+                        <form className="space-y-6 bg-white p-6 rounded-2xl" onSubmit={handleSubmit}>
                             <h2 className="text-center text-xl font-bold mb-1 text-gray-900">
                                 Login to your Account
                             </h2>
@@ -200,16 +200,6 @@ export default function LoginPage() {
                                 </div>
                             </div>
 
-                            {/* Create account link */}
-                            <div className="text-center text-sm">
-                                <p>
-                                    Don't have an account?{" "}
-                                    <a href="/signup" className="text-orange-400 hover:text-orange-700">
-                                        Create Account
-                                    </a>
-                                </p>
-                            </div>
-
                             {/* Submit button */}
                             <div>
                                 <button
@@ -221,7 +211,15 @@ export default function LoginPage() {
                                     {isSubmitting ? "Signing In..." : "Sign In"}
                                 </button>
                             </div>
-                            
+                              {/* Create account link */}
+                            <div className="text-center text-sm">
+                                <p>
+                                    Don't have an account?{" "}
+                                    <a href="/signup" className="text-orange-400 hover:text-orange-700">
+                                        Create Account
+                                    </a>
+                                </p>
+                            </div>
                         </form>
                     </div>
                 </div>

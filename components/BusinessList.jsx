@@ -18,7 +18,7 @@ export default function BusinessList({ businesses, onApprove, showApproveButton 
 
   if (businesses?.length === 0) {
     return (
-      <div className="mt-8 bg-white shadow rounded-lg p-6 text-center">
+      <div className="mt-8 bg-white shadow rounded-lg p-7 text-center">
         <p className="text-gray-500">No businesses found.</p>
       </div>
     );
