@@ -179,7 +179,7 @@ export default function InvoicesPage() {
         attempts++;
         console.log(`Checking payment status (attempt ${attempts})...`);
 
-        const response = await fetch('/api/mpesa/status', {
+        const response = await fetch('/api/payments/status', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
