@@ -1,11 +1,13 @@
 import { query } from '../../../../lib/db';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 export async function POST(request) {
   try {
     const { email, password } = await request.json();
 
-    // Validate required fields
     if (!email || !password) {
       return Response.json({ 
         success: false, 
@@ -13,7 +15,7 @@ export async function POST(request) {
       }, { status: 400 });
     }
 
-    // Find user by representativeEmail
+    // Find user
     const userSql = `
       SELECT 
         u.*, 
@@ -45,13 +47,25 @@ export async function POST(request) {
       }, { status: 401 });
     }
 
+    // Create token
+    const token = jwt.sign(
+      { 
+        userId: user.id, 
+        email: user.representativeEmail,
+        businessId: user.business_id 
+      }, 
+      JWT_SECRET, 
+      { expiresIn: '7d' }
+    );
+
     // Remove password from response
-    const { representativePassword: _, ...userWithoutPassword } = user;
+    const { representativePassword, ...userWithoutPassword } = user;
 
     return Response.json({ 
       success: true, 
       message: 'Login successful',
-      user: userWithoutPassword
+      user: userWithoutPassword,
+      token: token
     }, { status: 200 });
 
   } catch (error) {
@@ -61,12 +75,4 @@ export async function POST(request) {
       message: 'Internal server error' 
     }, { status: 500 });
   }
-}
-
-// Handle other HTTP methods
-export async function GET() {
-  return Response.json({ 
-    success: false, 
-    message: 'Method not allowed' 
-  }, { status: 405 });
 }

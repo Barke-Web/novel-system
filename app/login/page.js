@@ -95,7 +95,7 @@ export default function LoginPage() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             {/* Card wrapper */}
-            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row w-full max-w-6xl min-h-[75vh]">
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row w-full max-w-7xl min-h-[73vh]">
                 {/* Left side with background image */}
                 <div className="hidden lg:flex w-1/2 relative">
                     <Image
